@@ -34,8 +34,8 @@ for i in xrange(n_iters):
     l1 = sigmoid(np.dot(l0,wt3)) #Uncomment this for Classification
     l1_err = Y - l1
     
-    #l1_grad = l1_err * 0.001 #Regression error 
-    l1_grad = l1_err * sigderiv(np.dot(l0,wt3)) #Classification error
+    #l1_grad = l1_err * 0.001 #Gradient in case of regrassion
+    l1_grad = l1_err * sigderiv(np.dot(l0,wt3)) #Gradient in case of Classification
     
     wt3 = wt3 + np.dot(l0.T,l1_grad)
     
