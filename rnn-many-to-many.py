@@ -12,7 +12,6 @@ import numpy as np
 np.random.seed(0)
 
 def sigmoid(x):
-    #print "X:" + str(x)
     op= 1/(1+np.exp(-x))
     return op
 
@@ -57,7 +56,7 @@ for j in range(1):
     layer_2_deltas = list()
     layer_1_values = list()
     layer_1_values.append(np.atleast_2d(np.zeros(hidden_dim)))
-    #print j
+    
     for pos in range(binary_dim):
         
         X = np.array([[a[binary_dim-pos-1],b[binary_dim-pos-1]]])
@@ -77,19 +76,16 @@ for j in range(1):
     future_layer_1_delta = np.zeros(hidden_dim)
     
     for pos in range(binary_dim):
-        #print pos
+       
         X = np.array([[a[pos],b[pos]]])
         print X
         layer_1 = layer_1_values[-pos-1]
         prev_layer_l = layer_1_values[-pos-2]
         
         layer_2_delta = layer_2_deltas[-pos-1]
-        #print pos
-        #print "sig"
-        #print sigderiv(layer_1)
+        
         layer_1_delta = (np.dot(future_layer_1_delta,wth.T)+np.dot(layer_2_delta,wt1.T))*sigderiv(layer_1)
-        #print np.dot(layer_2_delta,wt1.T)*sigderiv(layer_1)
-        #layer_1_delta = (future_layer_1_delta.dot(wth.T) + layer_2_delta.dot(wt1.T)) * sigderiv(layer_1)
+        
         
         wt1_update += np.atleast_2d(np.dot(layer_1.T,layer_2_delta))
         wth_update += np.atleast_2d(np.dot(prev_layer_l.T,layer_1_delta))
