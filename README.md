@@ -1,2 +1,4 @@
 # DL-from-scratch
-Implmenttion of some Deep Learning models in pure Python and Numpy
+Implementation of some Deep Learning models in pure Python and Numpy.
+
+
